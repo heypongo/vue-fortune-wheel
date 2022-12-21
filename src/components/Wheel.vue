@@ -21,7 +21,7 @@ const props = withDefaults(
   {
     animDuration: 6000,
     data: {},
-    imgSrc: '',
+    imgSrc: "",
   }
 );
 
@@ -54,7 +54,6 @@ watch(
   }
 );
 
-
 const createWheel = () => {
   const wheelSize = computed(() => {
     const screenWidth = document.getElementById("wheel")?.clientWidth;
@@ -68,12 +67,10 @@ const createWheel = () => {
     };
   });
 
-  wheelStyle.value = computed(() => {
-    return {
-      width: `${wheelSize.value.width}px`,
-      height: `${wheelSize.value.height}px`,
-    };
-  });
+  wheelStyle.value = {
+    width: `${wheelSize.value.width}px`,
+    height: `${wheelSize.value.height}px`,
+  };
 
   const rayon = ref(
     Math.min(wheelSize.value.width, wheelSize.value.height) / 2
@@ -278,10 +275,10 @@ const createBorderCircle = (wheelSize) => {
 const addImgOnCenter = (rayon) => {
   container.value
     .append("svg:image")
-    .attr("x", `-${rayon/4}`)
-    .attr("y", `-${rayon/4}`)
-    .attr("width", rayon/2)
-    .attr("height", rayon/2)
+    .attr("x", `-${rayon / 4}`)
+    .attr("y", `-${rayon / 4}`)
+    .attr("width", rayon / 2)
+    .attr("height", rayon / 2)
     .attr("xlink:href", props.imgSrc);
 };
 
