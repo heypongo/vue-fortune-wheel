@@ -1,6 +1,6 @@
 {
   "name": "vue3-fortune-wheel",
-  "version": "1.0.4",
+  "version": "1.0.1",
   "scripts": {
     "dev": "vite",
     "build": "vuedx-typecheck . && vite build",
