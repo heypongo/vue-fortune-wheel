@@ -1,23 +1,31 @@
 <template>
-  <div class="wrap" @click="$refs.wheel.spin">
+  <div class="wrap" @click="clicked">
     <Wheel
       ref="wheel"
       :gift="gift"
       :data="data"
       @done="done"
-      :imgParams="logo"
+      :img-src="logo"
+      :is-clicked="isClicked"
     />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import Wheel from "./components/Wheel.vue";
 
 export default defineComponent({
   name: "App",
   components: {
-    Wheel,
+    Wheel
+  },
+  setup() {
+    const isClicked = ref(false);
+
+    return {
+      isClicked,
+    };
   },
   data() {
     return {
@@ -60,16 +68,15 @@ export default defineComponent({
           color: "#ffffff",
         },
       ],
-      logo: {
-        src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/2367px-Vue.js_Logo_2.svg.png",
-        width: 100,
-        height: 120,
-      },
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/2367px-Vue.js_Logo_2.svg.png",
     };
   },
   methods: {
     done(r) {
       console.log(r);
+    },
+    clicked() {
+      this.isClicked = true;
     },
   },
 });
