@@ -1,11 +1,3 @@
-<template>
-  <div
-    id="wheel"
-    :class="['wheel', `wheel_font-size--${props.data.length}`]"
-    :style="wheelStyle"
-  />
-</template>
-
 <script setup lang="ts">
 import * as d3 from "d3";
 import { computed, onMounted, ref, watch } from "vue";
@@ -357,6 +349,15 @@ onMounted(() => {
   }
 });
 </script>
+
+<template>
+  <div
+    id="wheel"
+    :class="['wheel', `wheel_font-size--${props.data.length}`]"
+    :style="wheelStyle"
+  />
+</template>
+
 
 <style>
 .wheel {
