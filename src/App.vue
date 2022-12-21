@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap" @click="clicked">
+  <div class="wrap" @click="handleClick">
     <Wheel
       ref="wheel"
       :gift="gift"
@@ -75,7 +75,7 @@ export default defineComponent({
     done(r) {
       console.log(r);
     },
-    clicked() {
+    handleClick() {
       this.isClicked = true;
     },
   },
