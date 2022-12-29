@@ -1,5 +1,5 @@
 {
-  "name": "vue3-fortune-wheel",
+  "name": "@heypongo/vue3-fortune-wheel",
   "version": "1.0.2",
   "scripts": {
     "dev": "vite",
