@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import * as d3 from "d3";
-import { computed, onMounted, ref, watch } from "vue";
+import { computed, nextTick, onMounted, ref, watch } from "vue";
 
 const props = withDefaults(
   defineProps<{
@@ -49,7 +49,6 @@ watch(
 const createWheel = () => {
   const wheelSize = computed(() => {
     const screenWidth = document.getElementById("wheel")?.clientWidth;
-
     const width = Math.min(screenWidth, style.value.width) - margin.value;
     const height = Math.min(screenWidth, style.value.width) + 120;
 
@@ -342,10 +341,13 @@ const animRotation = () => {
   };
 };
 
-onMounted(() => {
-  isLoaded.value = true;
-  if (isLoaded.value) {
-    setTimeout(() => createWheel(), 100)
+onMounted(async () => {
+  if (document.getElementById("wheel")?.clientWidth) {
+    createWheel()
+  } else {
+    setTimeout(() => {
+      createWheel()
+    }, 500)
   }
 });
 </script>
@@ -382,5 +384,15 @@ onMounted(() => {
 .wheel_font-size--7,
 .wheel_font-size--8 {
   font-size: 10px;
+}
+/* we will explain what these classes do next! */
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 </style>
