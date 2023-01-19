@@ -345,7 +345,7 @@ const animRotation = () => {
 onMounted(() => {
   isLoaded.value = true;
   if (isLoaded.value) {
-    createWheel();
+    setTimeout(() => createWheel(), 500)
   }
 });
 </script>
